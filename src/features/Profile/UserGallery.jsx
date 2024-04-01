@@ -2,8 +2,7 @@ import React from 'react'
 import { useOutletContext } from 'react-router';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Box, IconButton, ImageListItemBar, Typography } from '@mui/material';
-import { Info } from '@mui/icons-material';
+import { Box} from '@mui/material';
 
 const UserGallery = () => {
     const [ user, userId ] = useOutletContext();

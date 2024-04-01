@@ -12,8 +12,8 @@ import { format } from 'timeago.js';
 
 const StoryPage = () => {
 const navigate = useNavigate()
-const visibleIndex = React.useRef(0);
-const [selectedIndex, setSelectedIndex] = React.useState(0);
+const visibleIndex = useRef(0);
+const [selectedIndex, setSelectedIndex] = useState(0);
 const { userId } = useParams()
 const { auth } = useAuth()
 const axiosPrivate = useAxiosPrivate()

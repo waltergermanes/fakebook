@@ -28,9 +28,7 @@ function App() {
 
   return (
     <ThemingProvider>
-    
         <Routes>
-       
             <Route  path='/login' element={<Login/>}/>
             <Route  path='/register' element={<Register/>}/>
             <Route  path='/verify/:userId/:token' element={<EmailVerify/>}/>
