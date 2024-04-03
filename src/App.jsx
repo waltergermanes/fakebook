@@ -23,15 +23,17 @@ import Activity from './pages/Activity'
 import Comments from './components/Comments'
 import Likes from './components/Likes'
 import PersistLogin from './components/PersistLogin'
+import NoMatch from './components/NoMatch'
 
 function App() {
 
   return (
     <ThemingProvider>
         <Routes>
-            <Route  path='/login' element={<Login/>}/>
-            <Route  path='/register' element={<Register/>}/>
-            <Route  path='/verify/:userId/:token' element={<EmailVerify/>}/>
+            <Route path='*' element={<NoMatch />}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Register/>}/>
+            <Route path='/verify/:userId/:token' element={<EmailVerify/>}/>
            
             <Route path='/' element={<Layout/>}>
               <Route element={<PersistLogin/>}>

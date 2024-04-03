@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import TextField from '@mui/material/TextField'
-import { FormControl, Button, Typography, Alert, FormControlLabel, FormGroup, Checkbox, Stack, Input, InputAdornment, IconButton, Card, CardContent } from '@mui/material'
+import { FormControl, Button, Typography, Alert, FormControlLabel, FormGroup, Checkbox, Stack, Input, InputAdornment, IconButton, Card, CardContent, Tooltip, tooltipClasses } from '@mui/material'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import useAuth from '../../hooks/useAuth'
 import useInput from '../../hooks/useInput'
 import useToggle from '../../hooks/useToggle'
 import useApi from '../../hooks/useApi'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { Info, Visibility, VisibilityOff } from '@mui/icons-material'
+import styled from '@emotion/styled'
 
 const Login = () => {
   const {setAuth, socket, isConnected, setIsConnected } = useAuth()
@@ -54,6 +55,14 @@ const Login = () => {
   // useEffect(() => {
   //   localStorage.setItem('persist', persist)
   // }, [persist]) 
+  const CustomWidthTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))({
+    [`& .${tooltipClasses.tooltip}`]: {
+      maxWidth: 500,
+    },
+  });
+  const info = `Note: Some features of this account has been disabled. If you want to experience all features of this site, you can register new account`
   const canSave = Boolean(email) && Boolean(pwd)
   return (
     <>
@@ -107,9 +116,12 @@ const Login = () => {
       </FormControl>
        </CardContent>
      </Card>
-     <Card sx={{width: { xs: 200, md: `40vw`}, display: `flex`, flexDirection: `column`, p:1}}>
+     <Card sx={{width: { xs: 200, md: `40vw`}, display: `flex`, alignItems: `center`, p:1, gap: 1}}>
+     <CustomWidthTooltip title={info}>
+      <Info/>
+      </CustomWidthTooltip>
      <Typography variant="caption">Demo account: email: user1, password: user1</Typography>
-     <Typography variant="caption">Note: Some features of this account has been disabled. If you want to experience all features of this site, you can register new account</Typography>
+    
      </Card>
      </Stack>
     </>
