@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 const AuthContext = createContext({})
 
-const URL = process.env.NODE_ENV === 'production' ? undefined : `https://fakebook-api-kfi5.onrender.com`
+const URL = `https://fakebook-api-kfi5.onrender.com`
 const socket = io(URL, {
   autoConnect: false
 })
