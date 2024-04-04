@@ -89,7 +89,7 @@ const RightBar = () => {
   }));
   return (
     <>
-      <Box  flex={1}>
+      <Box  flex={1} sx={{ display: { xs: `none`, md: `block` } }}>
       <Stack display='flex'  flexDirection='column' gap={2} width='20%'  position='fixed' p={2} >
       <List  disablePadding={true} sx={{ position: `relative`, maxHeight: 400,}} >
       <TextField

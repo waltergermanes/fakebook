@@ -144,7 +144,7 @@ const followUser = async ({id})=> {
   let content = ''
   content = (
         <>
-        <Stack flex={3} sx={{  px: { md: 10, xs: 1} }}>
+        <Stack flex={3} sx={{  px: { md: 10, xs: 1}, overflowY: `hidden` }}>
             <Stack  alignItems={`center`} >
             { open && 
                     <Stack ref={containerRef} sx={{ position: `fixed`, width: `100%`, zIndex: 2, mt: -3}}>
@@ -225,7 +225,7 @@ const followUser = async ({id})=> {
                             </Stack>
                         </Box>
                         { userId === auth?.userId &&
-                        <label style={{ position: `absolute`, left: { xs: 50, md: 70 } , bottom: 0, cursor: `pointer`, zIndex: 1 }} onClick={()=> profilePicRef.current.click()}>
+                        <label style={{ position: `absolute`, left: 70, bottom: 0, cursor: `pointer`, zIndex: 1 }} onClick={()=> profilePicRef.current.click()}>
                             <input type="file" ref={profilePicRef} disabled={isLoadingProfilePicButton} onChange={handleChangeProfilePic} hidden />
                             <Fab size='small' disabled={isLoadingProfilePicButton} color="primary" aria-label="edit">
                                     <CameraAlt fontSize='small'/>

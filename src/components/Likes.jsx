@@ -2,7 +2,7 @@ import React from 'react'
 import useAxiosPrivate from '../hooks/useAxiosPrivate'
 import useAuth from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
-import { Avatar, List, ListItemAvatar, ListItemButton, ListItemText, Stack } from '@mui/material'
+import { Alert, Avatar, List, ListItemAvatar, ListItemButton, ListItemText, Stack } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const Likes = () => {
@@ -13,7 +13,7 @@ const Likes = () => {
     return data
   }
 
-  const { data: likes } = useQuery({
+  const { data: likes, isLoading } = useQuery({
     queryKey: [`likes`, auth.userId],
     queryFn: getLikePosts
   })
@@ -21,7 +21,10 @@ const Likes = () => {
   return (
    <Stack>
        <List sx={{ maxHeight: 500, overflowY: `auto` }} >
-            {  likes?.map((post, i)=>{
+            {  
+              isLoading ? `Loading`: likes.length < 1 
+              ? <Alert sx={{ width: `75vw` }} severity="info">You havent like a post yet.</Alert>  
+              : likes?.map((post, i)=>{
                 const name = `${post.postedBy.firstName} ${post.postedBy.lastName}`
                 const postedBy = post.postedBy._id === auth.userId 
                   return (

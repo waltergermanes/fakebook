@@ -14,10 +14,11 @@ const Layout = () => {
                 spacing={5} 
                 flexDirection='row'
                 marginTop={8}
+               
                 py={{ xs: 1, md: 3}}
                 px={{ sx: 3, md: 10}}
                 >         
-                <Stack flex={4} flexDirection='row' gap={{ sx: 0, md: 4 }} >
+                <Stack sx={{ overflowY: `hidden` }} flex={4} flexDirection='row' gap={{ sx: 0, md: 4 }} >
                   <Outlet/>
                 </Stack>
         </Stack>

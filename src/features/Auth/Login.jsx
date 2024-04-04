@@ -70,7 +70,7 @@ const Login = () => {
      <Stack sx={{display: 'grid', placeContent: `center`, gap: 1, width: '100vw', height: '100vh'}}>
       <Card >
        <CardContent>
-       <FormControl sx={{ width: { sm: `100vw`, md: `45vw`}, gap: 2}}>
+       <FormControl sx={{ width: { xs: `100%`, md: `45vw`}, gap: 2}}>
         { isError &&  <Alert  severity="error">{error?.response?.data.message}</Alert> }
        <TextField
          inputRef={inputRef}

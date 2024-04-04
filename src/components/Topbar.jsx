@@ -13,7 +13,7 @@ const Topbar = () => {
   const iconStyle = { fontSize: { xs: 25, md: 35 }}
   return (
     <>
-        <AppBar position="fixed" color="primary" sx={{ px: { sx: 3, md: 7 } }}>
+        <AppBar position="fixed" color="primary" sx={{ px: { xs: 1, md: 7 }, }}>
         <Toolbar sx={{ display: "flex", justifyContent:"space-between"}}>
               <Stack flex={2} direction={"row"} alignItems={"center"}>
                   <IconButton edge="start" aria-label="logo">

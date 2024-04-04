@@ -9,7 +9,7 @@ const Timeline = () => {
   return (
     <>
     <Sidebar/>
-      <Stack width={{ md: `50%`, sm: `100%` }} sx={{ px: { sx: 3 } }} gap={1}>
+      <Stack width={{ md: `50%`, xs: `100%` }} sx={{ px: { sx: 3 } }} gap={1}>
       <Stories/>
             <Feed/>
         

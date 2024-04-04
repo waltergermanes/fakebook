@@ -129,7 +129,7 @@ const CreatePost = () => {
                 <Grid container spacing={1}>
                   {
                     imgUrl?.map((img, index)=>(
-                      <Grid key={index} position={`relative`} item xs={6} md={6}>
+                      <Grid key={index} position={`relative`} item xs={12} md={6}>
                           <IconButton onClick={()=> handleRemovePic(index)} sx={{ position: `absolute`, top: 7, right: 2 }} color='error' aria-label="cancel">
                             <Cancel/>
                           </IconButton>

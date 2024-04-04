@@ -107,11 +107,11 @@ const Chat = () => {
                     </Stack>
                   :  chats?.map((chat, index)=>(
                     <Stack key={index} gap={1} ref={scroll}>
-                    <Stack direction={auth.userId === chat.sender._id ? `row-reverse` : `row`}alignItems={`flex-end`} gap={1}>
+                    <Stack  direction={auth.userId === chat.sender._id ? `row-reverse` : `row`}alignItems={`flex-end`} gap={1}>
                         <Avatar src={chat.sender.profilePhoto}  sx={{ width: 35, height: 35, mb: 2.5 }}/>
-                        <Stack>
+                        <Stack >
                             <Typography sx={{ fontSize:  12 }}>{chat.sender._id !== auth.userId && chat.sender.firstName}</Typography>
-                            <Paper sx={{ p: 1}} variant='outlined'>
+                            <Paper sx={{ p: 1, bgcolor: chat.sender._id !== auth.userId && `skyblue`}} variant='outlined'>
                                 <Typography sx={{  fontSize: 14}}>
                                     {chat.text}
                                 </Typography>

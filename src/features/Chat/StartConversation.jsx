@@ -12,7 +12,7 @@ const StartConversation = () => {
 
   return (
     <Stack flex={{ xs: 5, md: 3 }}>
-        <CardContent sx={{ height: 445, display: `grid`, placeContent: `center` }} >
+        <CardContent sx={{ height: 440, display: `grid`, placeContent: `center` }} >
             <Button onClick={handleOpenModal} variant="contained" color="primary">
               Start Conversation
             </Button>

@@ -74,7 +74,7 @@ const Feed = ({ userId }) => {
                         }))
   return (
     <>
-     <Stack position={`relative`} gap={3} px={{ md:5, xs: 1 }}>
+     <Stack position={`relative`}  gap={3} px={{ md:5, xs: 1 }}>
         { contentPost }
         { isFetchingNextPage && 
            <Stack width={`100%`}>
