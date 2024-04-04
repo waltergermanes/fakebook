@@ -86,7 +86,7 @@ const Post = ({ postId, user }) => {
         </Stack>
         <Divider/>
         <Stack flex={1} minHeight={{ xs: comments?.length < 1 ? 100 : 300, md: 300 }}>
-              <Box sx={{ height: {xs: 150 ,md: 230}, mb: 10 , overflowY: "scroll", p: 2,}}>
+              <Box sx={{ height: {xs: 180 ,md: 230}, mb: 10 , overflowY: "scroll", p: 2,}}>
               <Typography variant="body1" sx={{ py: 1 }}>{post?.img.length ? post?.desc : ``}</Typography>
                   {
                    isCommentLoading ?  <CommentSkeleton/> 

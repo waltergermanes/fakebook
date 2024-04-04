@@ -9,9 +9,9 @@ const UserGallery = () => {
 
   return (
     
-    <Box sx={{ width: 860, mt: 2}}>
+    <Box sx={{ width: { xs: 450, md: 860 }, mt: 2}}>
     <ImageList variant="masonry" cols={3} gap={4}>
-    {user.userPosts.map((item, index) => (
+    {user?.userPosts?.map((item, index) => (
       <ImageListItem key={index}>
         <img
           srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
