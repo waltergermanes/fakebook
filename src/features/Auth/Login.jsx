@@ -68,9 +68,9 @@ const Login = () => {
     <>
   
      <Stack sx={{display: 'grid', placeContent: `center`, gap: 1, width: '100vw', height: '100vh'}}>
-      <Card>
+      <Card >
        <CardContent>
-       <FormControl sx={{ width: { sm: `100vw`, md: `40vw`}, gap: 2}}>
+       <FormControl sx={{ width: { sm: `100vw`, md: `45vw`}, gap: 2}}>
         { isError &&  <Alert  severity="error">{error?.response?.data.message}</Alert> }
        <TextField
          inputRef={inputRef}
@@ -116,9 +116,11 @@ const Login = () => {
       </FormControl>
        </CardContent>
      </Card>
-     <Card sx={{width: { xs: 200, md: `40vw`}, display: `flex`, alignItems: `center`, p:1, gap: 1}}>
+     <Card sx={{width: `100%`, display: `flex`, alignItems: `center`, p:1}}>
      <CustomWidthTooltip title={info}>
-      <Info/>
+      <IconButton>
+        <Info/>
+      </IconButton>
       </CustomWidthTooltip>
      <Typography variant="caption">Demo account: email: user1, password: user1</Typography>
     

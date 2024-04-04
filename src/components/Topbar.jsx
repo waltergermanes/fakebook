@@ -15,7 +15,7 @@ const Topbar = () => {
     <>
         <AppBar position="fixed" color="primary" sx={{ px: { sx: 3, md: 7 } }}>
         <Toolbar sx={{ display: "flex", justifyContent:"space-between"}}>
-              <Stack flex={1} direction={"row"} alignItems={"center"}>
+              <Stack flex={2} direction={"row"} alignItems={"center"}>
                   <IconButton edge="start" aria-label="logo">
                     <AddAPhotoIcon  sx={iconStyle}/>
                     </IconButton >
@@ -23,7 +23,7 @@ const Topbar = () => {
                     FakeBook
                     </Typography>
               </Stack>
-              <Stack flex={1} direction={"row"} justifyContent={"space-between"}>
+              <Stack flex={3} direction={"row"} justifyContent={"space-between"}>
                   <IconButton LinkComponent={Link} to={'/'} edge="start" color="inherit" aria-label="menu">
                     <Home sx={iconStyle}/>
                   </IconButton>
@@ -34,7 +34,7 @@ const Topbar = () => {
                     <Message  sx={iconStyle}/>
                   </IconButton>
               </Stack>
-           <Stack flex={1} direction={`row`} justifyContent={`flex-end`}>
+           <Stack flex={2} direction={`row`} justifyContent={`flex-end`}>
            <AccountMenu/>
            </Stack>
         </Toolbar>

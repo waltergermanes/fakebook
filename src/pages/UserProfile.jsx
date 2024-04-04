@@ -244,9 +244,12 @@ const followUser = async ({id})=> {
                      </Box>
                 </Stack>
                
-                <Box sx={{ width: '100%', bgcolor: 'background.paper', }}>
-                <Tabs value={value} onChange={handleChangeTabValue}>
-                    
+                <Box sx={{ maxWidth: { md: `100%`, xs: 400, }, bgcolor: 'background.paper', }}>
+                <Tabs 
+                 variant="scrollable"
+                 scrollButtons="auto"
+                 value={value} onChange={handleChangeTabValue}>
+                
                     <Tab label="Posts"  icon={<Ballot />} iconPosition="start"  LinkComponent={Link} to={`/profile/${userId}`}/>
                     <Tab label="About" icon={<PersonPin />} iconPosition="start" value={`about`} LinkComponent={Link} to={`/profile/${userId}/about`}/>
                     <Tab label="Followers" icon={<Diversity3 />} iconPosition="start" value={`Followers`} LinkComponent={Link} to={`/profile/${userId}/followers`}/>
