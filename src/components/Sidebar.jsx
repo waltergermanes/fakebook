@@ -54,7 +54,7 @@ const Sidebar = () => {
            :  data?.length - 1 > 0
            ? <Stack sx={{ maxHeight: ""}} >
                <Typography variant="body1">Following Suggestions</Typography>
-               <List disablePadding={true} sx={{ maxHeight: 400, overflowY: `auto` }} >
+               <List disablePadding sx={{ maxHeight: 400, overflowY: `auto` }} >
             {  data?.filter((i, x)=> i._id !== auth?.userId && x < 10).map((user, i)=>{
                 const name = `${user.firstName} ${user.lastName}`
                   return (

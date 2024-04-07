@@ -1,6 +1,6 @@
 import { Stack, TextField, Button, Alert } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { useOutletContext } from 'react-router'
+import { useOutletContext, useParams } from 'react-router'
 import useAuth from '../../hooks/useAuth'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import { useMutation } from '@tanstack/react-query'
@@ -8,6 +8,7 @@ import { useMutation } from '@tanstack/react-query'
 const About = () => {
  const [ user ] = useOutletContext()
  const { auth } = useAuth()
+ const { userId } = useParams()
  const [err, setErr] = useState(``) 
  const [isSuccess, setSuccess] = useState(false) 
  const axiosPrivate = useAxiosPrivate()
@@ -64,16 +65,16 @@ const About = () => {
           value={valueInput?.lastName}
           variant="standard"
         />
-         <TextField
+        { auth.userId === userId && <TextField
          type='password'
           onChange={inputHandler}
           id="password"
           label="Change Password"
           variant="standard"
-        />
+        />}
       </Stack>
       <Stack gap={1}>
-        <TextField
+       <TextField
             onChange={inputHandler}
             id="email"
             label="Email"
@@ -87,13 +88,15 @@ const About = () => {
           value={valueInput?.address}
           variant="standard"
         />
-         <TextField
-         type='password'
-         onChange={inputHandler}
-          id="cpassword"
-          label="Confirm Password"
-          variant="standard"
-        />
+        {
+          auth.userId === userId &&  <TextField
+          type='password'
+          onChange={inputHandler}
+           id="cpassword"
+           label="Confirm Password"
+           variant="standard"
+         />
+        }
         {
            auth.userId === `65476ef9b2e4aec8d2a8b46f` 
            ? <Button sx={{bottom: 0, width: "100%", }} variant="contained" color="error" disabled>disabled</Button>

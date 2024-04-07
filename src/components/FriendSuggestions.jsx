@@ -17,7 +17,7 @@ const FriendSuggestions = () => {
 
   return (
       <>
-      <Stack sx={{ px: { xs: 1, md: 20}, width: `100%`, height: `80vh` }}>
+      <Stack sx={{ px: { xs: 1, md: 20}, width: `100%`, minHeight: `80vh` }}>
         <Typography>Following Suggestion</Typography>
           <Grid container spacing={2} sx={{ py: 2 }}>
               {
