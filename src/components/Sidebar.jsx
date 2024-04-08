@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Typography, Avatar, Button, Stack, List, ListItemButton, ListItemAvatar, ListItemText } from '@mui/material'
+import { Typography, Avatar, Alert, Button, Stack, List, ListItemButton, ListItemAvatar, ListItemText } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import useAuth from '../hooks/useAuth'
@@ -54,7 +54,7 @@ const Sidebar = () => {
            :  data?.length - 1 > 0
            ? <Stack sx={{ maxHeight: ""}} >
                <Typography variant="body1">Following Suggestions</Typography>
-               <List disablePadding sx={{ maxHeight: 400, overflowY: `auto` }} >
+               <List disablePadding sx={{ maxHeight: 350, overflowY: `auto` }} >
             {  data?.filter((i, x)=> i._id !== auth?.userId && x < 10).map((user, i)=>{
                 const name = `${user.firstName} ${user.lastName}`
                   return (
@@ -76,7 +76,9 @@ const Sidebar = () => {
              </List>
          <Button LinkComponent={Link} to={'/friendSuggestions'} variant='outlined' size='small'>See more...</Button>
           </Stack>
-         : <Typography variant="body1">No users available</Typography>
+         : <Alert severity="warning" >
+              No verified users available.
+           </Alert>
 
           }
           </Stack>

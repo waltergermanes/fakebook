@@ -1,4 +1,4 @@
-import { Grid, Stack, Typography } from '@mui/material'
+import { Alert, Grid, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import UserCard from './UserCard'
@@ -19,12 +19,18 @@ const FriendSuggestions = () => {
       <>
       <Stack sx={{ px: { xs: 1, md: 20}, width: `100%`, minHeight: `80vh` }}>
         <Typography>Following Suggestion</Typography>
-          <Grid container spacing={2} sx={{ py: 2 }}>
+          <Grid container spacing={2} sx={{ py: 2, my: 1 }}>
               {
                 isLoading 
                 ?  <Stack alignItems={'center'} sx={{ width: "100%" }}>
                     <ClipLoader color="#36d7b7"/>
-                  </Stack>
+                  </Stack> 
+                : data?.length < 2 ?
+                 <Stack width={`100%`}>
+                  <Alert severity="warning" >
+                    No verified users available.
+                  </Alert>
+                 </Stack>
                 :   data?.filter((i, x)=> i._id !== auth?.userId).map(user=> <UserCard key={user._id} user={user}/>)
               } 
           </Grid> 

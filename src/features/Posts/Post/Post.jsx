@@ -18,13 +18,34 @@ const Post = ({ postId, user }) => {
   const { fetchPostByID, getPostComment } = useApi()
   const [commentValue, setCommentValue] = useState('')
   const queryClient = useQueryClient()
-  const [isLike, setIsLike] = useState(false)
 
+  const [isLike, setIsLike] = useState(false)
+ 
   const { data: post, isLoading, isError, error } = useQuery({
     queryKey: [`post`, postId],
     queryFn: ()=> fetchPostByID(postId),
     enabled: !!postId
   })
+  const likePost = (id) =>{
+    return axiosPrivate.put(`/post/${post._id}/like`, {userId: id.userId})
+  } 
+  console.log(post?.likes?.length)
+  const [like, setLike] = useState(post?.likes?.length)
+
+  const likeMutation = useMutation({
+    mutationKey: [`like`],
+    mutationFn: likePost,
+    onSuccess: ()=>{
+      queryClient.invalidateQueries({ queryKey: ['like'] })
+    }
+  })
+  
+  const likeHandler = ()=>{
+    likeMutation.mutate({userId: auth.userId})
+    setLike(prev => isLike ? prev - 1 : prev + 1)
+    setIsLike(!isLike)
+  }
+
   useEffect(() => {
     setIsLike(post?.likes?.includes(auth?.userId))
   }, [post?.likes])
@@ -99,9 +120,9 @@ const Post = ({ postId, user }) => {
               </Box>
            <Box  sx={{position: "fixed", top: 'auto', bottom: 0, width: {xs: "100%", md: "50%"}, backgroundColor: "background.default" }}>
            <CardActions sx={{ display: `flex`, flexDirection: `column`, alignItems: `start` }}>
-            <Typography sx={{ ml: 2 }} variant="caption">{post?.likes?.length}</Typography>
+            <Typography sx={{ ml: 2 }} variant="caption">{like}</Typography>
             <Stack direction={`row`}>                 
-                  <IconButton aria-label="add to favorites">
+                  <IconButton onClick={likeHandler} aria-label="like">
                     <Favorite color={isLike ? 'error' : ''}/>
                   </IconButton>
                   <IconButton aria-label="comment">

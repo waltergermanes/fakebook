@@ -98,11 +98,12 @@ const About = () => {
          />
         }
         {
-           auth.userId === `65476ef9b2e4aec8d2a8b46f` 
+          auth.userId === userId ? auth.userId === `65476ef9b2e4aec8d2a8b46f` 
            ? <Button sx={{bottom: 0, width: "100%", }} variant="contained" color="error" disabled>disabled</Button>
            : <Button disabled={!valueInput || isPending} onClick={submitHandler} variant="outlined" color="primary">
             Save
           </Button>
+          : ``
         }
          
       </Stack>

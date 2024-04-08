@@ -31,13 +31,15 @@ const PostComponent = React.forwardRef(({ post }, ref) => {
   } 
 
   const likeMutation = useMutation({
+    mutationKey: [`like`],
     mutationFn: likePost,
+    onSuccess: ()=>{
+      queryClient.invalidateQueries({ queryKey: ['like'] })
+    }
   })
   
-  const { mutate } = likeMutation
-
   const likeHandler = ()=>{
-    mutate({userId: auth.userId})
+    likeMutation.mutate({userId: auth.userId})
     setLike(prev => isLike ? prev - 1 : prev + 1)
     setIsLike(!isLike)
   }
@@ -184,7 +186,7 @@ const PostComponent = React.forwardRef(({ post }, ref) => {
                 </CardContent>
                 <CardActions sx={{ display: `flex`, alignItems: `flex-end` }}>
                   <Stack justifyContent={`center`} alignItems={`center`}>                 
-                    <Typography variant="caption">{`${post?.likes?.length} ${post?.likes?.length > 1 ? `likes` : `like` }`}</Typography>
+                    <Typography variant="caption">{`${like} ${post?.likes?.length > 1 ? `likes` : `like` }`}</Typography>
                     <IconButton onClick={likeHandler} aria-label="add to favorites">
                       <Favorite  color={isLike ? 'error' : ''}/>
                     </IconButton>
