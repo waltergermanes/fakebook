@@ -17,12 +17,13 @@ const Following = () => {
         queryFn: getFollowing,
         enabled: !!userId
     })
+    console.log(following)
   return (
    <Stack direction={`row`} alignItems={`center`} gap={1}>
      <AvatarGroup max={4} sx={{'& .MuiAvatar-root': { width:25, height: 25, fontSize: 12 }}}>
        {
         following?.map(following=> (
-            <Avatar key={following._id} sx={{ width: 25, height: 25,}} alt={following.firstName +` `+ following.lastName} src={following.profilePhoto} />
+            <Avatar key={following?._id} sx={{ width: 25, height: 25,}} alt={following?.firstName +` `+ following?.lastName} src={following?.profilePhoto} />
         ))
        }
     </AvatarGroup>

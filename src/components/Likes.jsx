@@ -20,7 +20,7 @@ const Likes = () => {
 
   return (
    <Stack>
-       <List sx={{ maxHeight: 500, overflowY: `auto` }} >
+       <List sx={{ maxHeight: 500, width: `75vw`, overflowY: `auto` }} >
             {  
               isLoading ? `Loading`: likes.length < 1 
               ? <Alert sx={{ width: `75vw` }} severity="info">You havent like a post yet.</Alert>  
@@ -45,6 +45,7 @@ const Likes = () => {
               })
             }
         </List>
+      
    </Stack>
   )
 }
